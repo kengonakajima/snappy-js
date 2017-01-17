@@ -2,6 +2,7 @@
 
 #include "snappy/snappy-c.h"
 
+extern "C" {
 
 int memCompressSnappy( char *out, int outlen, char *in, int inlen ) {
     size_t maxsz = snappy_max_compressed_length(inlen);
@@ -19,6 +20,7 @@ int memDecompressSnappy( char *out, int outlen, char *in, int inlen ) {
 
 
 int main() {
+    printf("sizeof size_t:%ld\n",sizeof(size_t));
     const char hoge[5] = { 11,22,33,44,55 };
     char compressed[1000];
     
@@ -28,4 +30,6 @@ int main() {
         printf(" %02x ", compressed[i]);
     }
     return 0;
+}
+
 }
