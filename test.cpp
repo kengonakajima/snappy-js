@@ -29,6 +29,23 @@ int main() {
     for(int i=0;i<r;i++) {
         printf(" %02x ", compressed[i]);
     }
+    printf("\n");
+    char uncompressed[1000];
+    int ur = memDecompressSnappy( uncompressed, sizeof(uncompressed), (char*)compressed, r);
+    printf("uncompret:%d\n",ur);
+    for(int i=0;i<ur;i++) {
+        printf(" %02x", uncompressed[i]);
+    }
+    printf("\n");
+    ///////
+    
+    const char poo[7]  = { 5,16,11,22,33,44,55 };
+    ur = memDecompressSnappy( uncompressed, sizeof(uncompressed), (char*)poo, 7 );
+    printf("fixeddecompret:%d\n",ur);
+    for(int i=0;i<ur;i++) {
+        printf(" %02x", uncompressed[i]);
+    }
+    printf("\n");    
     return 0;
 }
 
