@@ -22,8 +22,13 @@ int memDecompressSnappy( char *out, int outlen, char *in, int inlen ) {
 int main() {
     printf("sizeof size_t:%ld\n",sizeof(size_t));
     const char hoge[5] = { 11,22,33,44,55 };
-    char compressed[1000];
+    printf("orig:%d\n",(int)sizeof(hoge));
+    for(int i=0;i<sizeof(hoge);i++) {
+        printf(" %02x", hoge[i]);
+    }
+    printf("\n");
     
+    char compressed[1000];
     int r = memCompressSnappy( compressed, sizeof(compressed), (char*)hoge, sizeof(hoge) );
     printf("compret:%d\n",r);
     for(int i=0;i<r;i++) {
